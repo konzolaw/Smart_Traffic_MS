@@ -268,3 +268,9 @@ def get_routes_data(request):
     )
     
     return JsonResponse(routes_data)
+
+def home_view(request):
+    # You can redirect to the map page or create a custom homepage
+    return render(request, 'map/home.html')  # Create a home.html template
+
+    
