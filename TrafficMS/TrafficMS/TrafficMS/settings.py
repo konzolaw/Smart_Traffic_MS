@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'map', # Add the map app to the list of installed apps
-    'reroute', # Add the reroute app to the list of installed apps
 ]
 
 MIDDLEWARE = [
