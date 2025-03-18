@@ -60,7 +60,7 @@ def map_view(request):
         if location_data:
             context['location'] = location_data
     
-    return render(request, 'map_template.html', context)
+    return render(request, 'map/map_template.html', context)
 
 def get_map_data(request):
     """
@@ -245,7 +245,7 @@ def reroute_view(request):
             context['selected_mode'] = travel_mode
             context['selected_avoid'] = avoid
     
-    return render(request, 'reroute_template.html', context)
+    return render(request, 'map/reroute_template.html', context)
 
 def get_routes_data(request):
     """
@@ -268,3 +268,13 @@ def get_routes_data(request):
     )
     
     return JsonResponse(routes_data)
+
+
+
+
+def home_view(request):
+    # You can redirect to the map page or create a custom homepage
+    return render(request, 'map/home.html')  # Create a home.html template
+    # OR redirect to the map page:
+    # from django.shortcuts import redirect
+    # return redirect('map_view')
