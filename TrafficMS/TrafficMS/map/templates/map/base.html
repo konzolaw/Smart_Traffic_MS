@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +16,8 @@
             <a href="{% url 'home' %}">My Website</a>
         </div>
         <div class="navbar-menu">
-            <a href="{% url 'map_view' %}">Map</a>
-            <a href="{% url 'reroute_view' %}">Routes</a>
+            <a href="{% url 'map' %}">Map</a>
+            <a href="{% url 'reroute' %}">Routes</a>
             <!-- Add more navigation links as needed -->
         </div>
     </nav>
