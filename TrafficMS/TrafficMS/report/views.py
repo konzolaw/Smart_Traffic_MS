@@ -45,7 +45,7 @@ def report_incident(f_name, l_name, mail, incident_type, location, incident_deta
         incident_location.send_keys(location)
         details.send_keys(incident_details)
         submit_button.click()
-        print("Incident reported successfully...")
+        #print("Incident reported successfully...")
         return True
     except Exception as e:
         print(f"An error occurred while reporting incident: {e}")
