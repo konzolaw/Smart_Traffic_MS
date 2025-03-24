@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('home', views.home_view, name='home_view'),  # Root URL path
+    path('base', views.base_view, name='base_view'),  # Base URL path
     # Map views
     path('map/', views.map_view, name='map_view'),
     path('api/map-data/', views.get_map_data, name='get_map_data'),
