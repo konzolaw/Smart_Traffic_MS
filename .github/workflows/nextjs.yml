@@ -1,4 +1,4 @@
-name: Deploy Next.js site to GitHub Pages
+name: Deploy Next.js to GitHub Pages
 
 on:
   push:
@@ -18,34 +18,39 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository  
-        uses: actions/checkout@v4  
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Navigate to project directory  
-        run: cd smarttraffic-aiwebsite  
+      # DEBUG: List files to confirm structure
+      - name: Debug - List root directory files
+        run: ls -la
 
-      - name: Setup Node.js  
-        uses: actions/setup-node@v4  
-        with:  
-          node-version: "20"  
-          cache: "npm"  
+      - name: Debug - List project directory files
+        run: ls -la smarttraffic-aiwebsite/
 
-      - name: Install Dependencies  
-        run: npm install  
-        working-directory: smarttraffic-aiwebsite  
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
 
-      - name: Build Next.js Project  
-        run: npm run build  
-        working-directory: smarttraffic-aiwebsite  
+      # Install dependencies in the correct subfolder
+      - name: Install Dependencies
+        run: npm install
+        working-directory: smarttraffic-aiwebsite  # Forces npm to run inside subfolder
 
-      - name: Export Static Files  
-        run: npm run export  
-        working-directory: smarttraffic-aiwebsite  
+      - name: Build Next.js Project
+        run: npm run build
+        working-directory: smarttraffic-aiwebsite
 
-      - name: Upload Artifact  
-        uses: actions/upload-pages-artifact@v3  
-        with:  
-          path: smarttraffic-aiwebsite/out  
+      - name: Export Static Files
+        run: npm run export
+        working-directory: smarttraffic-aiwebsite
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: smarttraffic-aiwebsite/out
 
   deploy:
     environment:
