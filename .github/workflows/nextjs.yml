@@ -17,38 +17,35 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: smarttraffic-aiwebsite  # Working directory set to your project folder
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          path: smarttraffic-aiwebsite  # Checkout directly into the subfolder
+      - name: Checkout Repository  
+        uses: actions/checkout@v4  
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "npm"
+      - name: Navigate to project directory  
+        run: cd smarttraffic-aiwebsite  
 
-      - name: Install Dependencies
-        run: npm install
-        working-directory: smarttraffic-aiwebsite  # Explicitly set working directory for each step
+      - name: Setup Node.js  
+        uses: actions/setup-node@v4  
+        with:  
+          node-version: "20"  
+          cache: "npm"  
 
-      - name: Build Next.js Project
-        run: npm run build
-        working-directory: smarttraffic-aiwebsite
+      - name: Install Dependencies  
+        run: npm install  
+        working-directory: smarttraffic-aiwebsite  
 
-      - name: Export Static Files
-        run: npm run export
-        working-directory: smarttraffic-aiwebsite
+      - name: Build Next.js Project  
+        run: npm run build  
+        working-directory: smarttraffic-aiwebsite  
 
-      - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: smarttraffic-aiwebsite/out  # Output is inside your subfolder
+      - name: Export Static Files  
+        run: npm run export  
+        working-directory: smarttraffic-aiwebsite  
+
+      - name: Upload Artifact  
+        uses: actions/upload-pages-artifact@v3  
+        with:  
+          path: smarttraffic-aiwebsite/out  
 
   deploy:
     environment:
